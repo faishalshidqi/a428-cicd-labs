@@ -26,5 +26,13 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Are you done using React App? (Click "Proceed" to kill)'
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
+
     }
 }
